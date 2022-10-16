@@ -67,6 +67,13 @@ def getNameFromID(id):
     }
     return jsonify(response)
 
+@app.route("/getcleannamefromid/<id>")
+def getCleanNameFromID(id):
+    name = ApiFunctions.getCleanNameById(id) # get patient by name
+    response = {
+        "name": name
+    }
+    return jsonify(response)
 
 # When run from command line, start the server.
 if __name__ == '__main__':
