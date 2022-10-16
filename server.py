@@ -1,6 +1,8 @@
 # Import nessecary parts from flask and faker to generate random    # name and email.
+from operator import ge
 from flask import Flask, request, jsonify
 from faker import Faker
+import ApiFunctions
 # To create and initialize a faker generator.
 fake = Faker()
 # Create the app object that will route our calls.
@@ -24,8 +26,18 @@ def test(name):
     response = {
         "name": name
     }
-    print(name)
+    # print(name)
     return jsonify(response)
+
+@app.route("/getnamefromid/<id>")
+def getNameFromID(id):
+    
+    name = ApiFunctions.getNameById(id) # get patient by name
+    response = {
+        "name": name
+    }
+    return jsonify(response)
+
 
 # When run from command line, start the server.
 if __name__ == '__main__':
