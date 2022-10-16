@@ -9,4 +9,4 @@ def getPractitionerInformation(id):
     location = getLocationByName(name)
     print(location[2].split()[-1])
 getPractitionerInformation(1)
-print(distance())
+print(distance())sdd

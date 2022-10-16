@@ -7,12 +7,12 @@ def getMedicationInformation(id):
     if not medication:
         print("No Medication Found")
         return False
-    print(medication)
 
     lst = []
     for med in medication:
-        concatenatedString = medication = medication['coding']['display']
-        lst += concatenatedString
-        print(concatenatedString)
-    
+        concatenated_string = med['resource']['code']['coding'][0]['display']
+        lst.append(concatenated_string)
+ 
     return lst
+
+print(getMedicationInformation(1))
