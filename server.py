@@ -18,17 +18,22 @@ def index():
         "email": email
     }
     # return name and email as a JSON httpresponse using jsonify
-    return jsonify(response)
+    return "Please add command"
 
-@app.route("/getlocation/<name>")
-def test(name):
-    
+@app.route("/getlocationbyname/<name>")
+def getLocationByName(name):
+    print("getting location by name")
+    location = ApiFunctions.getLocationByName(name)
+    print(location)
     response = {
-        "name": name
+        "location": location[0],
+        "longandlat": location[1],
+        "locationline": location[2]
     }
-    # print(name)
+    print(jsonify(response))
     return jsonify(response)
 
+# getLocationByName("Alfonso758")
 @app.route("/getnamefromid/<id>")
 def getNameFromID(id):
     
