@@ -22,8 +22,8 @@ def index():
 
 
 @app.route("/getlocationbyid/<id>")
-def getLocationByName(id):
-    print("getting location by name")
+def getLocationById(id):
+    print("getting location by id")
     location = ApiFunctions.getLocationById(id)
     print(location)
     response = {
