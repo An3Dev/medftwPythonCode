@@ -1,8 +1,10 @@
 # Import nessecary parts from flask and faker to generate random    # name and email.
+import json
 from operator import ge
 from flask import Flask, request, jsonify
 from faker import Faker
 import ApiFunctions
+import CarePlanInformation
 # To create and initialize a faker generator.
 fake = Faker()
 # Create the app object that will route our calls.
@@ -47,6 +49,14 @@ def getLocationByName(name):
     print(jsonify(response))
     return jsonify(response)
 
+@app.route("/getcareplan/<id>")
+def getCarePlan(id):
+    careplan = CarePlanInformation.getCarePlanInformation(id)
+
+    result = jsonify(careplan)
+    print("JSONIFY careplan: ", str(result))
+    return result
+    
 # getLocationByName("Alfonso758")
 @app.route("/getnamefromid/<id>")
 def getNameFromID(id):
