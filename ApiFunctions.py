@@ -77,3 +77,11 @@ def getLocationByName(name):
         locationLL = location['extension'][0]['extension']
         locationLine = f"{location.get('line', '')[0]}, {location.get('city', '')}, {location.get('state', '')} {location.get('postalCode', '')}"
         return (locationLL[0]['valueDecimal'], locationLL[1]['valueDecimal'], locationLine)
+
+def getLocationById(id):
+    patient = getPatientById(id)
+    if patient:
+        location = patient['resource']['address'][0]
+        locationLL = location['extension'][0]['extension']
+        locationLine = f"{location.get('line', '')[0]}, {location.get('city', '')}, {location.get('state', '')} {location.get('postalCode', '')}"
+        return (locationLL[0]['valueDecimal'], locationLL[1]['valueDecimal'], locationLine)

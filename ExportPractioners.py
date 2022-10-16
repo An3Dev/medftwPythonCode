@@ -19,11 +19,19 @@ for practioner in practioners:
     location = practioner['resource']['address'][0]
     locationLine = f"{location['line'][0]}, {location['city']}, {location['state']} {zipcode}"
 
-    locator = Nominatim(user_agent='myGeocoder')
-    loc = locator.geocode('locationLine')
-    
-    practionerContacts.append([locationLine, loc.latitude, loc.longitude, email])
-    #print([locationLine, loc.latitude, loc.longitude, email])
+    try:
+        locator = Nominatim(user_agent='myGeocoder', timeout=2)
+        loc = locator.geocode(locationLine)
+    except:
+        pass
 
-df = pd.DataFrame(practionerContacts, columns=['Address', 'Longitude', 'Latitude' 'Email'])
+    try:
+        practionerContacts.append([locationLine, loc.latitude, loc.longitude, email])
+        print([locationLine, loc.latitude, loc.longitude, email])
+    except:
+        practionerContacts.append([locationLine, '', '', email])
+        print([locationLine, '', '', email])
+    
+
+df = pd.DataFrame(practionerContacts, columns=['Address', 'Longitude', 'Latitude', 'Email'])
 df.to_csv('PractionerContacts', index=False)
