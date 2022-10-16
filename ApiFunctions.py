@@ -6,8 +6,19 @@ import requests
 headers = {
     'x-api-key': 'SJ8YzDQlJS94hddGrJ0FY1Wt4aVq1B1T2DlLHigi',
 }
+
+postHeaders = {
+    'accept': '*/*',
+    'x-api-key': 'SJ8YzDQlJS94hddGrJ0FY1Wt4aVq1B1T2DlLHigi',
+    'Content-Type': 'application/fhir+json',
+}
 ourLink = "https://fhir.sz5jd1jcumq1.static-test-account.isccloud.io/"
 # https://portal.events.isccloud.io/deployments/sz5jd1jcumq1/overview
+
+def executePost(resource, json):
+    requests.post(f'{ourLink}{resource}', headers=postHeaders, json=json)
+
+
 
 def getRequest(resource="", att="", numPages=False):
     response = requests.get(f'{ourLink}{resource}{att}', headers=headers, verify=True)
