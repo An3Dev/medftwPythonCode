@@ -34,11 +34,24 @@ def getCarePlanInformation(id):
                 for st in s:
                     if st[:1] != '<' and st[:1]:
                         strings.append(st.split('<')[0])
-                care = [strings[0:1],
-                        strings[2:3],
-                        strings[4:]
-                        ]
+                
+                care = []
+                try:
+                    care.append(strings[0])
+                except:
+                    pass
+                try:
+                    care.append(strings[2])
+                except:
+                    pass
+                try:
+                    care.append(strings[4])
+                except:
+                    pass
+
                 plans.append(care)
         return plans
     else:
         return []
+
+print(getCarePlanInformation(1))
