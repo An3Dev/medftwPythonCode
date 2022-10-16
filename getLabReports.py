@@ -7,9 +7,10 @@ def getLabReports(id):
     reports = getDiagnosticReports(id)
     reportNames = []
 
-    for lab, name in reports:
-        reportNames.append(name)
+    for lab, name, time in reports:
+        date = time[:10]
+        reportNames.append([date, name])
 
-    return reportNames
+    return reportNames[::-1]
 
 print(getLabReports(2333))

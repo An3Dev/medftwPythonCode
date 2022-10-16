@@ -84,6 +84,11 @@ def getCleanNameById(id):
     name = ''.join([c for c in pureName if c not in numbers])
     return name
 
+def getCleanNameByName(pureName):
+    numbers = '0987654321'
+    name = ''.join([c for c in pureName if c not in numbers])
+    return name
+
 def getIdByName(name):
     return getPatientByName(name)['resource']['id']
 

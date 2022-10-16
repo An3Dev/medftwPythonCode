@@ -11,11 +11,11 @@ def getDiagnosticReports(id):
     lst = []
     for report in reports:
         displays = report['resource']['category'][0]['coding']
-        print(report['resource']['effectiveDateTime'])
+        time = report['resource']['effectiveDateTime']
         if len(displays) == 1:
             name = displays[0]['display']
             rep = report['resource']['code']['coding'][0]['display']
-            lst.append([name, rep])
+            lst.append([name, rep, time])
         """ Implement when data is readable
         if len(displays) == 2:
             print(displays[0]['display'])

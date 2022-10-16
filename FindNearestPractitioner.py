@@ -21,7 +21,7 @@ def getNearestPractitioner(id):
     closest = []
     for i in closestPractioners.index:
         p = df.iloc[i]
-        closest.append([getPractionerNameById(p['PractionerID']), 
+        closest.append([getCleanNameByName(getPractionerNameById(p['PractionerID'])), 
                         p['Email'], 
                         p['Address'], 
                         p['Distance']])
