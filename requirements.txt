@@ -3,4 +3,5 @@ faker
 gunicorn
 requests
 pandas
+geopy
 # base64
