@@ -86,3 +86,7 @@ def getLocationById(id):
         locationLine = f"{location.get('line', '')[0]}, {location.get('city', '')}, {location.get('state', '')} {location.get('postalCode', '')}"
         return (locationLL[0]['valueDecimal'], locationLL[1]['valueDecimal'], locationLine)
 
+def getPractionerNameById(id):
+    practitioner = getRequest('Practitioner', f'/{id}')
+    names = practitioner['name'][0]
+    return f"{names['prefix'][0]}{names['given'][0]} {names['family']}"

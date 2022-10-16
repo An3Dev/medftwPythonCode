@@ -6,7 +6,8 @@ practioners = getRequest('Practitioner')
 
 practionerContacts = []
 for practioner in practioners:
-    
+    PractionerID = practioner['resource']['id']
+
     zipcode = practioner['resource']['address'][0]['postalCode']
     if len(zipcode) > 5:
         zipcode = zipcode[0:5]
@@ -26,12 +27,11 @@ for practioner in practioners:
         pass
 
     try:
-        practionerContacts.append([locationLine, loc.latitude, loc.longitude, email])
-        print([locationLine, loc.latitude, loc.longitude, email])
+        practionerContacts.append([PractionerID, locationLine, loc.latitude, loc.longitude, email])
     except:
-        practionerContacts.append([locationLine, '', '', email])
-        print([locationLine, '', '', email])
+        practionerContacts.append([PractionerID, locationLine, '', '', email])
+    print(PractionerID)
     
 
-df = pd.DataFrame(practionerContacts, columns=['Address', 'Longitude', 'Latitude', 'Email'])
-df.to_csv('PractionerContacts', index=False)
+df = pd.DataFrame(practionerContacts, columns=['PractionerID', 'Address', 'Longitude', 'Latitude', 'Email'])
+df.to_csv('PractionerContacts.csv', index=False)
