@@ -27,9 +27,6 @@ def getNearestPractitioner(id):
                         p['Distance']])
     return closest
 
-    
-
-print(getNearestPractitioner(2333))
 
 
 
