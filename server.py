@@ -5,6 +5,9 @@ from flask import Flask, request, jsonify
 from faker import Faker
 import ApiFunctions
 import CarePlanInformation
+import ImmunizationInformation
+import AllergyInformation
+import FindNearestPractitioner
 # To create and initialize a faker generator.
 fake = Faker()
 # Create the app object that will route our calls.
@@ -73,6 +76,25 @@ def getCleanNameFromID(id):
     response = {
         "name": name
     }
+    return jsonify(response)
+
+@app.route("/getimmfromid/<id>")
+def getImmFromId(id):
+    
+    response = ImmunizationInformation.getImmunizationInformation(id) # get patient by name
+    
+    # print(response)
+    return jsonify(response)
+
+@app.route("/getallergies/<id>")
+def getAllergiesFromId(id):
+    response = AllergyInformation.getAllergyInformation(id) # get patient by name
+    
+    return jsonify(response)
+
+@app.route("/personalizedpract/<id>")
+def getPersonalizedPract(id):
+    response = FindNearestPractitioner.getNearestPractitioner(id) # get patient by name
     return jsonify(response)
 
 # When run from command line, start the server.
