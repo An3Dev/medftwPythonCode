@@ -1,0 +1,6 @@
+flask
+faker
+gunicorn
+requests
+pandas
+base64
