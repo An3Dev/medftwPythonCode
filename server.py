@@ -95,6 +95,7 @@ def getAllergiesFromId(id):
 @app.route("/personalizedpract/<id>")
 def getPersonalizedPract(id):
     response = FindNearestPractitioner.getNearestPractitioner(id) # get patient by name
+    print(response)
     return jsonify(response)
 
 # When run from command line, start the server.
