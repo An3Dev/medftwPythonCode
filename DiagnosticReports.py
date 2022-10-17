@@ -23,4 +23,4 @@ def getDiagnosticReports(id):
         """
     return lst
 
-getDiagnosticReports(1)
+[print(r) for r in getDiagnosticReports(1)]

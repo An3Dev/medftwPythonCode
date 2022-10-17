@@ -12,4 +12,7 @@ def getImage(prompt):
                                     'n_iter' : 1})
     raw = image.json()['image']
     imageBytes = base64.b64decode(raw) #decode
-    return imageBytes
+    with open('image.png', 'wb') as fh:
+        fh.write(imageBytes)
+
+getImage('Animal Dander')

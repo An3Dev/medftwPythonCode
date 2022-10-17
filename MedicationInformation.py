@@ -15,4 +15,4 @@ def getMedicationInformation(id):
  
     return lst
 
-print(getMedicationInformation(1))
+[print(r) for r in getMedicationInformation(1)]

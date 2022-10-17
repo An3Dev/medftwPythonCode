@@ -14,3 +14,5 @@ def getImmunizationInformation(id):
         lst.append(concatenatedString)
     
     return lst
+
+[print(r) for r in getImmunizationInformation(1)]

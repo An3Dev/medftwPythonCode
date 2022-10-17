@@ -13,4 +13,4 @@ def getLabReports(id):
 
     return reportNames[::-1]
 
-print(getLabReports(2333))
+[print(r) for r in getLabReports(3536)]
